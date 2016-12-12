@@ -11,7 +11,7 @@ h5,
 h6 {
   padding:0;
   margin:0;
-  font-family: "Roboto", sans-serif;
+  font-family: system, -apple-system, ".SFNSDisplay-Regular", HelveticaNeue, Arial;
 }
 
 .clear-fix {
@@ -141,11 +141,35 @@ a {
   padding: 10px;
 }
 
+#topContacts {
+  justify-content: flex-start;
+  line-height: 22px;
+}
+
+#topContacts li {
+  margin-right: 10px;
+}
+
 .flex-column {
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
   padding: 10px;
+}
+
+#skills {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+#skills li {
+  line-height:1.5em;
+  float:left;
+  display:inline;
+  width:25%;
+
+  margin-right: 10px;
 }
 
 .center-content {
