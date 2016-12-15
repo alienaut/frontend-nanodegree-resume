@@ -34,29 +34,62 @@ var bio = {
   }
 };
 
-bio.display();
-
 var education = {
   schools: [
     {
-      name: 'Ismet Aktar Vocational School',
+      name: 'Marmara Üniversitesi',
       location: 'Istanbul / Turkey',
-      degree: '',
-      majors: [],
-      dates: '-',
-      url: ''
+      degree: 'Bachelor\'s degree',
+      majors: ['Teacher Training in Computer and Control'],
+      dates: '2010 - 2015',
+      url: 'http://elkbil.tef.marmara.edu.tr/en/'
+    },
+    {
+      name: 'Balıkesir Üniversitesi',
+      location: 'Balıkesir / Turkey',
+      degree: 'Associate\'s degree',
+      majors: ['computer Programming'],
+      dates: '2007 - 2009',
+      url: 'http://www.balikesir.edu.tr/index.php/baun/birim/edremit_meslek_yuksekokulu'
     }
   ],
   onlineCourses: [
     {
-      title: '',
-      school: '',
-      dates: '-',
-      url: ''
+      title: 'Ruby on Rails: An Introduction',
+      school: 'Johns Hopkins University on Coursera',
+      dates: '2015',
+      url: 'https://www.coursera.org/account/accomplishments/verify/N6X3QKXKHGAC'
+    },
+    {
+      title: 'Rails with Active Record and Action Pack',
+      school: 'Johns Hopkins University on Coursera',
+      dates: '2015',
+      url: 'https://www.coursera.org/account/accomplishments/verify/TQF329BCKXFH'
     }
   ],
   display: function() {
-    return false;
+    this.schools.forEach(function(school) {
+      $('#education').append(HTMLschoolStart);
+      $lastSchoolEntry = $('.education-entry:last-of-type');
+      $lastSchoolEntry.append(addContent(HTMLschoolName, school.name));
+      $lastSchoolEntry.append(addContent(HTMLschoolDegree, school.degree));
+      $lastSchoolEntry.append(addContent(HTMLschoolDates, school.dates));
+      $lastSchoolEntry.append(addContent(HTMLschoolLocation, school.location));
+      school.majors.forEach(function(major) {
+        $lastSchoolEntry.append(addContent(HTMLschoolMajor, major));
+      });
+    });
+
+    $('#education').append(HTMLonlineClasses);
+
+    this.onlineCourses.forEach(function(onlineCourse) {
+      $('#education').append(HTMLschoolStart);
+      $lastSchoolEntry = $('.education-entry:last-of-type');
+      $lastSchoolEntry.append(addContent(HTMLonlineTitle, onlineCourse.title));
+      $lastSchoolEntry.append(addContent(HTMLonlineSchool, onlineCourse.school));
+      $lastSchoolEntry.append(addContent(HTMLonlineDates, onlineCourse.dates));
+      $lastSchoolEntry.append(addContent(HTMLonlineURL, onlineCourse.url));
+    });
   }
 };
 
@@ -90,4 +123,8 @@ var projects = {
   }
 }
 
+var sections = [bio, education, work, projects];
 
+sections.forEach(function(section) {
+  section.display();
+});
