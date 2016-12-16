@@ -1,3 +1,5 @@
+'use-strict';
+
 var addContent = function(HTML, content) {
   return HTML.replace('%data%', content);
 }
@@ -70,7 +72,7 @@ var education = {
   display: function() {
     this.schools.forEach(function(school) {
       $('#education').append(HTMLschoolStart);
-      $lastSchoolEntry = $('.education-entry:last-of-type');
+      var $lastSchoolEntry = $('.education-entry:last-of-type');
       $lastSchoolEntry.append(addContent(HTMLschoolName, school.name));
       $lastSchoolEntry.append(addContent(HTMLschoolDegree, school.degree));
       $lastSchoolEntry.append(addContent(HTMLschoolDates, school.dates));
@@ -96,16 +98,44 @@ var education = {
 var work = {
   jobs: [
     {
-      employer: '',
-      title: '',
-      location: '',
-      dates: 'in progress',
-      description: ''
-
+      employer: 'Momentic',
+      title: 'Web Developer',
+      location: 'İstanbul / Turkey',
+      dates: 'October 2016 - in progress',
+      description: 'I am working as Momentic\' Team member to build web application of momentic which is great way to tell stories with pictures'
+    },
+    {
+      employer: 'İdemama',
+      title: 'Web Developer',
+      location: 'Istanbul / Turkey',
+      dates: 'December 2015 - September 2016  ',
+      description: 'I was recruited to develop new features for idemama.com such as idemama market which freelance logo designers can offer to sale their designs on our website.'
+    },
+    {
+      employer: 'Nomad Commerce',
+      title: 'Web Developer',
+      location: 'Istanbul / Turkey',
+      dates: 'February 2015 - December 2016  ',
+      description: 'I was there to continue development of the forivia.com(project moved to another platform after I left the company) later on I build and developed other projects such us backend services for Devrim Erbil\'s exhibits. In nomad commerce I\'ve worked with a large team and various technologies. It was a good experience to learn.'
+    },
+    {
+      employer: 'Bilende',
+      title: 'Web Developer Intern',
+      location: 'Istanbul / Turkey',
+      dates: 'July 2012 – September 2014',
+      description: 'I joined Bilende team as a intern and still my education in university continues. Nevertheless I took responsibilities to maintain existing projects and begin to develop my first applications there. It was a great beginning to my web development career and I am proud being a part of Bilende team.'
     }
   ],
   display: function() {
-    return false;
+    this.jobs.forEach(function(job) {
+      $('#workExperience').append(HTMLworkStart);
+      var $lastWorkEntry = $('.work-entry:last-of-type');
+      $lastWorkEntry.append(addContent(HTMLworkEmployer, job.employer));
+      $lastWorkEntry.append(addContent(HTMLworkTitle, job.title));
+      $lastWorkEntry.append(addContent(HTMLworkDates, job.dates));
+      $lastWorkEntry.append(addContent(HTMLworkLocation, job.location));
+      $lastWorkEntry.append(addContent(HTMLworkDescription, job.description));
+    });
   }
 }
 
