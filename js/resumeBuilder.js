@@ -142,14 +142,29 @@ var work = {
 var projects = {
   projects: [
     {
-      title: 'string',
-      dates: 'string -',
-      description: '',
-      images: ['', '']
+      title: 'İdemama Market',
+      dates: 'December 2015 - June 2016',
+      description: 'A market which you can buy logos from professional designers.',
+      images: ['images/idemama.png']
+    },
+    {
+      title: 'Imaginable Guidelines İstanbul',
+      dates: 'June 2014 - Decembe 2014',
+      description: 'A platform which you can talk about İstanbul and upload pictures from its streets.',
+      images: ['images/igi.png']
     }
   ],
   display: function() {
-    return false;
+    this.projects.forEach(function(project) {
+      $('#projects').append(HTMLprojectStart);
+      var $lastProjectEntry = $('.project-entry:last-of-type');
+      $lastProjectEntry.append(addContent(HTMLprojectTitle, project.title));
+      $lastProjectEntry.append(addContent(HTMLprojectDates, project.dates));
+      $lastProjectEntry.append(addContent(HTMLprojectDescription, project.description));
+      project.images.forEach(function(image) {
+        $lastProjectEntry.append(addContent(HTMLprojectImage, image));
+      });
+    });
   }
 }
 
