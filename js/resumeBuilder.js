@@ -2,7 +2,7 @@
 
 var addContent = function(HTML, content) {
   return HTML.replace('%data%', content);
-}
+};
 
 var bio = {
   name: 'Yusuf Yalım',
@@ -39,7 +39,7 @@ var bio = {
 var education = {
   schools: [
     {
-      name: 'Marmara Üniversitesi',
+      name: 'Marmara University',
       location: 'Istanbul / Turkey',
       degree: 'Bachelor\'s degree',
       majors: ['Teacher Training in Computer and Control'],
@@ -47,7 +47,7 @@ var education = {
       url: 'http://elkbil.tef.marmara.edu.tr/en/'
     },
     {
-      name: 'Balıkesir Üniversitesi',
+      name: 'Balıkesir University',
       location: 'Balıkesir / Turkey',
       degree: 'Associate\'s degree',
       majors: ['computer Programming'],
@@ -122,7 +122,7 @@ var work = {
       employer: 'Bilende',
       title: 'Web Developer Intern',
       location: 'Istanbul / Turkey',
-      dates: 'July 2012 – September 2014',
+      dates: 'July 2012 - September 2014',
       description: 'I joined Bilende team as a intern and still my education in university continues. Nevertheless I took responsibilities to maintain existing projects and begin to develop my first applications there. It was a great beginning to my web development career and I am proud being a part of Bilende team.'
     }
   ],
@@ -137,7 +137,7 @@ var work = {
       $lastWorkEntry.append(addContent(HTMLworkDescription, job.description));
     });
   }
-}
+};
 
 var projects = {
   projects: [
@@ -166,7 +166,7 @@ var projects = {
       });
     });
   }
-}
+};
 
 var sections = [bio, education, work, projects];
 
