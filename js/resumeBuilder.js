@@ -1,6 +1,10 @@
 'use-strict';
 
-var addContent = function(HTML, content) {
+var addContent = function(HTML, content, url) {
+  if(url !== undefined){
+    var _HTML = HTML.replace('%data%', content);
+    return _HTML.replace('#', url);
+  }
   return HTML.replace('%data%', content);
 };
 
@@ -65,7 +69,7 @@ var education = {
     this.schools.forEach(function(school) {
       $('#education').append(HTMLschoolStart);
       var $lastSchoolEntry = $('.education-entry:last-of-type'),
-        $schoolName = addContent(HTMLschoolName, school.name),
+        $schoolName = addContent(HTMLschoolName, school.name, school.url),
         $schoolDegree = addContent(HTMLschoolDegree, school.degree);
       $lastSchoolEntry.append($schoolName + $schoolDegree);
       $lastSchoolEntry.append(addContent(HTMLschoolDates, school.dates));
@@ -157,7 +161,7 @@ var map = {
   display: function() {
     $('#mapDiv').append(googleMap);
   }
-}
+};
 
 var sections = [bio, education, work, projects, map];
 
