@@ -16,18 +16,16 @@ var bio = {
   },
   welcomeMessage: 'A teacher, web developer, linux guy, samurai wannabe. Loves oldschool games, movies, music and science-fiction books.',
   skills: ['Ruby', 'Ruby on Rails', 'Javascript', 'Jquery', 'ReactJS', 'HTML', 'CSS', 'Postgres', 'Manjora Linux', 'Ubuntu', 'MacOS'],
-  bioPic: 'images/yusuf.jpg',
+  biopic: 'images/yusuf.jpg',
   display: function() {
     $('#header').prepend(addContent(HTMLheaderRole, this.role));
     $('#header').prepend(addContent(HTMLheaderName, this.name));
-
-    $('#topContacts').append(addContent(HTMLmobile, this.contacts.mobile));
-    $('#topContacts').append(addContent(HTMLemail, this.contacts.email));
-    $('#topContacts').append(addContent(HTMLgithub, this.contacts.github));
-    $('#topContacts').append(addContent(HTMLtwitter, this.contacts.twitter));
-    $('#topContacts').append(addContent(HTMLlocation, this.contacts.location));
-
-    $('#header').append(addContent(HTMLbioPic, this.bioPic));
+    $('#topContacts, #footerContacts').append(addContent(HTMLmobile, this.contacts.mobile));
+    $('#topContacts, #footerContacts').append(addContent(HTMLemail, this.contacts.email));
+    $('#topContacts, #footerContacts').append(addContent(HTMLgithub, this.contacts.github));
+    $('#topContacts, #footerContacts').append(addContent(HTMLtwitter, this.contacts.twitter));
+    $('#topContacts, #footerContacts').append(addContent(HTMLlocation, this.contacts.location));
+    $('#header').append(addContent(HTMLbioPic, this.biopic));
     $('#header').append(addContent(HTMLwelcomeMsg, this.welcomeMessage));
     $('#header').append(HTMLskillsStart);
     this.skills.forEach(function(skill) {
@@ -66,9 +64,10 @@ var education = {
   display: function() {
     this.schools.forEach(function(school) {
       $('#education').append(HTMLschoolStart);
-      var $lastSchoolEntry = $('.education-entry:last-of-type');
-      $lastSchoolEntry.append(addContent(HTMLschoolName, school.name));
-      $lastSchoolEntry.append(addContent(HTMLschoolDegree, school.degree));
+      var $lastSchoolEntry = $('.education-entry:last-of-type'),
+        $schoolName = addContent(HTMLschoolName, school.name),
+        $schoolDegree = addContent(HTMLschoolDegree, school.degree);
+      $lastSchoolEntry.append($schoolName + $schoolDegree);
       $lastSchoolEntry.append(addContent(HTMLschoolDates, school.dates));
       $lastSchoolEntry.append(addContent(HTMLschoolLocation, school.location));
       school.majors.forEach(function(major) {
@@ -154,8 +153,15 @@ var projects = {
   }
 };
 
-var sections = [bio, education, work, projects];
+var map = {
+  display: function() {
+    $('#mapDiv').append(googleMap);
+  }
+}
+
+var sections = [bio, education, work, projects, map];
 
 sections.forEach(function(section) {
   section.display();
 });
+

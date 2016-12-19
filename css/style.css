@@ -132,7 +132,13 @@ a {
 
 /* TODO: Replace with image later */
 #header {
-  background-color: #484848;
+  background-color: #103758;
+}
+
+.role {
+  color: #fff;
+  font-style: italic;
+  font-size: 34px;
 }
 
 .flex-box {
